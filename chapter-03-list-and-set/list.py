@@ -1,6 +1,4 @@
 # TODO: Error handling
-# TODO: Implement test code using PyTest
-
 class List:
     def __init__(self):
         self.storage = []
