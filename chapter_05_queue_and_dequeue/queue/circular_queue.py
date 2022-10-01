@@ -1,64 +1,61 @@
+from typing import Any
+
+
 class OverFlowException(Exception):
     def __str__(self) -> str:
-        return "Queue is full"
+        return "queue is full"
 
 
 class UnderFlowException(Exception):
     def __str__(self) -> str:
-        return "Queue is empty"
+        return "queue is empty"
 
 
 class CircularQueue:
     def __init__(self, size: int = 8):
-        self.__limit = size
-        self.__storage = [None for _ in range(self.__limit)]
-        self.__front = 0
-        self.__rear = 0
+        self._limit: int = size
+        self._storage: list[Any] = [None for _ in range(self._limit)]
+        self._front: int = 0
+        self._rear: int = 0
 
     def __str__(self) -> str:
-        self.display()
-        return f"queue: {self.__storage}\nfront: {self.__front}\nrear: {self.__rear}\nlength: {self.get_size()}\n\n"
-
-    def get_front(self) -> int:
-        return self.__front
-
-    def get_rear(self) -> int:
-        return self.__rear
+        return f"0-circular-queue_handson: {self._storage}\nordered_by_index: {self.display()}\nfront: {self._front}\nrear: {self._rear}" \
+               f"\nlength: {self.get_size()}\n\n"
 
     def get_size(self) -> int:
         # it returns a current length
         # not limit
-        return (self.__rear - self.__front + self.__limit) % self.__limit
+        return (self._rear - self._front + self._limit) % self._limit
 
     def is_empty(self) -> bool:
-        return self.__front == self.__rear
+        return self._front == self._rear
 
     def is_full(self) -> bool:
-        return self.__front == (self.__rear + 1) % self.__limit
+        return self._front == (self._rear + 1) % self._limit
 
-    def enqueue(self, element):
+    def enqueue(self, element: Any) -> None:
         # check whether the queue is full or not
         if self.is_full():
             raise OverFlowException()
 
         # manage index - rear
-        self.__rear = (self.__rear + 1) % self.__limit
-        self.__storage[self.__rear] = element
+        self._rear = (self._rear + 1) % self._limit
+        self._storage[self._rear] = element
 
-    def dequeue(self):
+    def dequeue(self) -> Any:
         # check whether the queue is empty
         if self.is_empty():
             raise UnderFlowException()
 
         # manage index - front
-        self.__front = (self.__front + 1) % self.__limit
+        self._front = (self._front + 1) % self._limit
 
         # assign an variable
-        # and save the queue's updated self.__front's element
-        temp = self.__storage[self.__front]
+        # and save the queue's updated self._front's element
+        temp = self._storage[self._front]
 
         # and re-assign the element by location with None
-        self.__storage[self.__front] = None
+        self._storage[self._front] = None
 
         # return the variable before stored
         return temp
@@ -66,21 +63,19 @@ class CircularQueue:
     def peek(self):
         # return front-most element
         # because it is a queue
-        return self.__storage[(self.__front + 1) % self.__limit]
+        return self._storage[(self._front + 1) % self._limit]
 
     def display(self) -> list:
-        if self.__rear > self.__front:
+        if self._rear > self._front:
             # in this case, just print
             # from next element of front to rear
-            print(self.__storage[self.__front + 1: self.__rear + 1])
-            return
+            return self._storage[self._front + 1: self._rear + 1]
 
         # if front is larger than rear,
         # merge two list into one and print
         # - from rear to last
         # - from first to front
-        print(self.__storage[self.__front + 1:] + self.__storage[:self.__rear + 1])
-        return
+        return self._storage[self._front + 1:] + self._storage[:self._rear + 1]
 
 
 q = CircularQueue(8)

@@ -76,12 +76,12 @@ how circular queue works, geeksforgeeks
 # Custom error using for overflow
 class OverFlowException(Exception):
     def __str__(self) -> str:
-        return "Queue is full"
+        return "queue is full"
 
 # Custom error using for underflow
 class UnderFlowException(Exception):
     def __str__(self) -> str:
-        return "Queue is empty"
+        return "queue is empty"
 ```
 
 ```python
