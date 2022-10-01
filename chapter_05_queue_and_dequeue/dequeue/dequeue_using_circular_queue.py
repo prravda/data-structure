@@ -40,7 +40,11 @@ class CircularDequeue(CircularQueue):
         # if the dequeue is not empty
         # go to the next processes
         temp = self._storage[self._rear]
+        # assign None as a mark of empty index
+        self._storage[self._rear] = None
+        # index management
         self._rear = (self._rear - 1 + self._limit) % self._limit
+        # return stored value
         return temp
 
     def get_rear(self) -> Any:

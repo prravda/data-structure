@@ -76,7 +76,11 @@ class CircularDequeue(CircularQueue):
         # if the dequeue is not empty
         # go to the next processes
         temp = self._storage[self._rear]
+        # assign None as a mark of empty index
+        self._storage[self._rear] = None
+        # index management
         self._rear = (self._rear - 1 + self._limit) % self._limit
+        # return stored value
         return temp
 
     def get_rear(self) -> Any:
@@ -114,17 +118,19 @@ def add_front(self, element: Any) -> None:
     
     의 순서, 즉, queue 의 순서와 반대가 된 것이다.
 ```python
-def delete_rear() -> Any:
-    # before delete an element, 
-    # check whether the queue is empty or not
+def delete_rear(self) -> Any:
+    # before do this, check whether this dequeue is empty
     if self.is_empty():
-        return UnderFlowException
-    # declare an variable to store current index's element
-    # and assign current index's element into it
-    current = self._storage[self._rear]
+        raise UnderFlowException
+
+    # if the dequeue is not empty
+    # go to the next processes
+    temp = self._storage[self._rear]
+    # assign None as a mark of empty index
+    self._storage[self._rear] = None
     # index management
     self._rear = (self._rear - 1 + self._limit) % self._limit
-    # return the last element value
-    return current
+    # return stored value
+    return temp
 ```
 - `delete_rear` 의 처리방식도 위와 같은 이유로 circular queue 의 순서와 반대가 된다.
