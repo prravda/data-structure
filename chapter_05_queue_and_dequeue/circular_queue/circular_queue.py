@@ -3,12 +3,12 @@ from typing import Any
 
 class OverFlowException(Exception):
     def __str__(self) -> str:
-        return "queue is full"
+        return "circular_queue is full"
 
 
 class UnderFlowException(Exception):
     def __str__(self) -> str:
-        return "queue is empty"
+        return "circular_queue is empty"
 
 
 class CircularQueue:
@@ -19,7 +19,7 @@ class CircularQueue:
         self._rear: int = 0
 
     def __str__(self) -> str:
-        return f"0-circular-queue_handson: {self._storage}\nordered_by_index: {self.display()}\nfront: {self._front}\nrear: {self._rear}" \
+        return f"circular-circular_queue: {self._storage}\nordered_by_index: {self.display()}\nfront: {self._front}\nrear: {self._rear}" \
                f"\nlength: {self.get_size()}\n\n"
 
     def get_size(self) -> int:
@@ -34,7 +34,7 @@ class CircularQueue:
         return self._front == (self._rear + 1) % self._limit
 
     def enqueue(self, element: Any) -> None:
-        # check whether the queue is full or not
+        # check whether the circular_queue is full or not
         if self.is_full():
             raise OverFlowException()
 
@@ -43,7 +43,7 @@ class CircularQueue:
         self._storage[self._rear] = element
 
     def dequeue(self) -> Any:
-        # check whether the queue is empty
+        # check whether the circular_queue is empty
         if self.is_empty():
             raise UnderFlowException()
 
@@ -51,7 +51,7 @@ class CircularQueue:
         self._front = (self._front + 1) % self._limit
 
         # assign an variable
-        # and save the queue's updated self._front's element
+        # and save the circular_queue's updated self._front's element
         temp = self._storage[self._front]
 
         # and re-assign the element by location with None
@@ -62,7 +62,7 @@ class CircularQueue:
 
     def peek(self):
         # return front-most element
-        # because it is a queue
+        # because it is a circular_queue
         return self._storage[(self._front + 1) % self._limit]
 
     def display(self) -> list:

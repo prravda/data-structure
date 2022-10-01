@@ -1,4 +1,4 @@
-# TODO: implement priority queue
+# TODO: implement priority circular_queue
 class PriorityQueue:
     def __init__(self):
         self.items = []

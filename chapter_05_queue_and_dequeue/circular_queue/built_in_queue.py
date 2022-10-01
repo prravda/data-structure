@@ -1,19 +1,19 @@
-# python's built in queue module hands on
+# python's built in circular_queue module hands on
 from queue import Queue, LifoQueue
 
-# make a limited sized queue
+# make a limited sized circular_queue
 # with the argument, 'maxsize'
 q = Queue(maxsize=5)
 
 # if the 'maxsize' argument is 0,
-# the queue size is set as infinite
+# the circular_queue size is set as infinite
 inf_q = Queue(0)
 
 # and if you don't pass an integer value maxsize,
 # this value automatically is set as 0
 default_inf_q = Queue()
 
-# if you try to get an element to an empty queue,
+# if you try to get an element to an empty circular_queue,
 # it works but there is no error be thrown
 # because this get is only worked in this condition
 # with self.not_empty
@@ -27,6 +27,6 @@ q.get()
 q.put(1)
 
 # you can make a stack with this module
-# with from queue import LifoQueue (Last in First out)
-# internally, it inherits the queue
+# with from circular_queue import LifoQueue (Last in First out)
+# internally, it inherits the circular_queue
 stack = LifoQueue()

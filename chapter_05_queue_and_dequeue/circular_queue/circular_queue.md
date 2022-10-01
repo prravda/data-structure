@@ -76,12 +76,12 @@ how circular queue works, geeksforgeeks
 # Custom error using for overflow
 class OverFlowException(Exception):
     def __str__(self) -> str:
-        return "queue is full"
+        return "circular_queue is full"
 
 # Custom error using for underflow
 class UnderFlowException(Exception):
     def __str__(self) -> str:
-        return "queue is empty"
+        return "circular_queue is empty"
 ```
 
 ```python
@@ -94,7 +94,7 @@ class CircularQueue:
 
     def __str__(self) -> str:
         self.display()
-        return f"queue: {self.__storage}\nfront: {self.__front}\nrear: {self.__rear}\nlength: {self.get_size()}\n\n"
+        return f"circular_queue: {self.__storage}\nfront: {self.__front}\nrear: {self.__rear}\nlength: {self.get_size()}\n\n"
 
     def get_front(self) -> int:
         return self.__front
@@ -114,7 +114,7 @@ class CircularQueue:
         return self.__front == (self.__rear + 1) % self.__limit
 
     def enqueue(self, element):
-        # check whether the queue is full or not
+        # check whether the circular_queue is full or not
         if self.is_full():
             raise OverFlowException()
 
@@ -123,7 +123,7 @@ class CircularQueue:
         self.__storage[self.__rear] = element
 
     def dequeue(self):
-        # check whether the queue is empty
+        # check whether the circular_queue is empty
         if self.is_empty():
             raise UnderFlowException()
 
@@ -131,7 +131,7 @@ class CircularQueue:
         self.__front = (self.__front + 1) % self.__limit
 
         # assign an variable
-        # and save the queue's updated self.__front's element
+        # and save the circular_queue's updated self.__front's element
         temp = self.__storage[self.__front]
 
         # and re-assign the element by location with None
@@ -142,7 +142,7 @@ class CircularQueue:
 
     def peek(self):
         # return front-most element
-        # because it is a queue
+        # because it is a circular_queue
         return self.__storage[(self.__front + 1) % self.__limit]
 
     def display(self) -> list:
@@ -185,7 +185,7 @@ class CircularQueue:
 
 ```python
 def enqueue(self, element):
-        # check whether the queue is full or not
+        # check whether the circular_queue is full or not
         if self.is_full():
             raise OverFlowException()
 
@@ -239,7 +239,7 @@ def is_full(self) -> bool:
 
 ```python
 def dequeue(self):
-        # check whether the queue is empty
+        # check whether the circular_queue is empty
         if self.is_empty():
             raise UnderFlowException()
 
@@ -247,7 +247,7 @@ def dequeue(self):
         self.__front = (self.__front + 1) % self.__limit
 
         # assign an variable
-        # and save the queue's updated self.__front's element
+        # and save the circular_queue's updated self.__front's element
         temp = self.__storage[self.__front]
 
         # and re-assign the element by location with None

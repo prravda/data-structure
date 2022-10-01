@@ -1,11 +1,11 @@
-from chapter_05_queue_and_dequeue.queue.circular_queue import *
+from chapter_05_queue_and_dequeue.circular_queue.circular_queue import *
 
 
 class CircularDequeue(CircularQueue):
     def __init__(self, size):
         super().__init__(size)
 
-    # cover up the circular queue's method
+    # cover up the circular circular_queue's method
     # into the circular dequeue
     def add_rear(self, element) -> None:
         self.enqueue(element)
@@ -17,7 +17,7 @@ class CircularDequeue(CircularQueue):
         return self.peek()
 
     # add front's index management strategy is
-    # reverse of queue
+    # reverse of circular_queue
     # so, first -1 to front and add the limit,
     # second, modulo calculation to this value
     # and the front is empty,
