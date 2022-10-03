@@ -1,7 +1,7 @@
-from typing import Optional
+from typing import Optional, Any
 
 
 class Node:
     def __init__(self, elem: Optional[int] = None, link: Optional["Node"] = None):
-        self.data = elem
-        self.link = link
+        self.data: Any = elem
+        self.link: Node = link
