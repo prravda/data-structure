@@ -88,7 +88,7 @@ class LinkedList:
             # into the node_before_insert.link
             node_before_insert.link = node_to_insert
 
-    def delete(self, position) -> None:
+    def delete(self, position: int) -> None:
         node_before_deletion = self.get_node(position - 1)
 
         if node_before_deletion is None:
@@ -114,6 +114,7 @@ class LinkedList:
             current_size_another_list -= 1
 
 
+# test
 def test_linked_list_insertion():
     linked_list = LinkedList()
     index_to_allocate = 0
