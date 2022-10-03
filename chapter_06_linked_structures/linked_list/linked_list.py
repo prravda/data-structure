@@ -121,7 +121,7 @@ def test_linked_list_insertion():
     data_to_allocate = 10
     linked_list.insert(index_to_allocate, data_to_allocate)
 
-    linked_list.get_entry(index_to_allocate) == data_to_allocate
+    assert linked_list.get_entry(index_to_allocate) == data_to_allocate
 
 
 def test_linked_list_deletion():
@@ -132,7 +132,7 @@ def test_linked_list_deletion():
 
     linked_list.delete(number_of_allocation - 1)
 
-    linked_list.size() != number_of_allocation
+    assert linked_list.size() != number_of_allocation
 
 
 def test_linked_list_replacement():
