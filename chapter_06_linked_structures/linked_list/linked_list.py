@@ -31,6 +31,8 @@ class LinkedList:
             container.append(current_node.data)
             current_node = current_node.link
 
+        return container
+
     # linkedlist-specific methods definition
     def get_node(self, position: int) -> Optional[Node]:
         if position < 0:
@@ -112,6 +114,26 @@ class LinkedList:
 
             another_linked_list.delete(current_size_another_list)
             current_size_another_list -= 1
+
+
+def test_linked_list_basics():
+    linked_list = LinkedList()
+    linked_list.display()
+    linked_list.insert(0, 10)
+    linked_list.insert(0, 20)
+    linked_list.insert(1, 30)
+    linked_list.insert(linked_list.size(), 40)
+    linked_list.insert(2, 50)
+
+    assert linked_list.display() == [20, 30, 50, 10, 40]
+
+    linked_list.replace(2, 90)
+
+    assert linked_list.display() == [20, 30, 90, 10, 40]
+
+
+
+
 
 
 # test
