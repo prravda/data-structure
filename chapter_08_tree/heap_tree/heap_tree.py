@@ -45,5 +45,26 @@ class MaxHeap:
 
         # 1-2. up-heap till the data is larger than it's current parent
         while i != 1 and data > self.get_parent(i):
-            # 1-3. update the i'th value 
+            # 1-3. update the i'th value into its parent
             self.heap[i] = self.get_parent(i)
+            # 1-4. re-assign i // 2 into i
+            i = i // 2
+
+        # 2. assign the data parameter into the i'th index location
+        self.heap[i] = data
+
+    def delete(self):
+        parent = 1
+        child = 2
+
+        if not self.is_empty():
+            heap_root = self.heap[1]
+            heap_last = self.heap[self.size()]
+
+            while child <= self.size():
+                if child < self.size() and self.get_left_child(parent) < self.get_right_child(parent):
+                    child += 1
+                if heap_last >= self.heap[child]:
+                    break
+
+                self.heap[]
