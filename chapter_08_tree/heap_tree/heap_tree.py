@@ -36,22 +36,27 @@ class MaxHeap:
         return self.heap[1:]
 
     def insert(self, data: int) -> None:
-        # 0. insert the data at the last of heap
+        # 0. append data into the last of heap
         self.heap.append(data)
-        
-        # 1. rebalancing - using up-heap till fulfill the condition of heap
-        # 1-1. get the index of the last node
-        i = self.size()
 
-        # 1-2. up-heap till the data is larger than it's current parent
-        while i != 1 and data > self.get_parent(i):
-            # 1-3. update the i'th value into its parent
-            self.heap[i] = self.get_parent(i)
-            # 1-4. re-assign i // 2 into i
-            i = i // 2
+        # 1. create a variable idx to traverse the heap and
+        #    init it as the last index of heap
+        idx = self.size()
 
-        # 2. assign the data parameter into the i'th index location
-        self.heap[i] = data
+        # 2. run up-heap (because this is max-heap)
+        #    till fulfill the (max) heap property
+        #    - the index finally be the index of the root node
+        #    - the key of the parent node is larger or same with the n
+        while idx != 1 and self.get_parent(idx) < data:
+            # - assign the parent`s key into current node
+            self.heap[idx] = self.get_parent(idx)
+            # - then, go up to its parent node
+            idx = idx // 2
+
+        # if the up-heap proces is done, assign the data into the
+        # appropriate location
+        self.heap[idx] = data
+
 
     def delete(self):
         parent = 1
