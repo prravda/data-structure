@@ -1,35 +1,36 @@
 from typing import Optional, List
 
+
 class MaxHeap:
     def __init__(self) -> None:
         self.heap = []
         # invalid the 0th index
         self.heap.append(0)
-    
+
     def size(self) -> int:
         return len(self.heap) - 1
-    
+
     def is_empty(self) -> bool:
         return self.size() == 0
-    
+
     def get_parent(self, current_index: int) -> Optional[int]:
         parent_index = current_index // 2
         return self.heap[parent_index]
 
     def get_left_child(self, current_index: int) -> Optional[int]:
         left_child_index = current_index * 2
-        
+
         if left_child_index > self.size():
             return None
-            
+
         return self.heap[left_child_index]
 
     def get_right_child(self, current_index: int) -> Optional[int]:
         right_child_index = current_index * 2 + 1
-        
+
         if right_child_index > self.size():
             return None
-        
+
         return self.heap[right_child_index]
 
     def display(self) -> List[int]:
@@ -57,7 +58,6 @@ class MaxHeap:
         # appropriate location
         self.heap[idx] = data
 
-
     def delete(self):
         parent = 1
         child = 2
@@ -72,4 +72,12 @@ class MaxHeap:
                 if heap_last >= self.heap[child]:
                     break
 
-                self.heap[]
+                self.heap[parent] = self.heap[child]
+
+                parent = child
+                child *= 2
+
+            self.heap[parent] = heap_last
+            self.heap.pop(-1)
+
+            return heap_root
