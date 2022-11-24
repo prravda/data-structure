@@ -1,6 +1,7 @@
 from typing import Optional
 
 
+# TODO: heapify and swap method should be implemented, and should detached this processes from insert and delete.
 class HeapTreeRefactored:
     def __init__(self):
         self.heap = [0]
